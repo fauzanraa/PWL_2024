@@ -29,13 +29,13 @@ class UserSeeder extends Seeder
                 'nama' => 'Manager',
                 'password' => Hash::make('12345'),
             ],
-            [    
-                'user_id' => 3,
-                'level_id' => 3,
-                'username' => 'staff',
-                'nama' => 'Staff/Kasir',
-                'password' => Hash::make('12345'),
-            ],
+            // [    
+            //     'user_id' => 3,
+            //     'level_id' => 3,
+            //     'username' => 'staff',
+            //     'nama' => 'Staff/Kasir',
+            //     'password' => Hash::make('12345'),
+            // ],
         ];
         DB::table('m_user')->insert($data);
     }

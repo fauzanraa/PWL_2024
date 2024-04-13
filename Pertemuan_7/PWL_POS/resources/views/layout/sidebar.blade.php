@@ -46,21 +46,21 @@
               <li class="nav-item">
                 <a href="{{ url('/kategori')}}" class="nav-link {{ ($activeMenu == 'kategori')? 'active' : '' }}">
                   <i class="nav-icon far fa-bookmark"></i>
-                  <p>Katgeori Barang</p>
+                  <p>Kategori Barang</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ url('/barang') }}" class="nav-link {{ ($activeMenu == 'stok')? 'active' : '' }}">
                   <i class="nav-icon fas fa-cubes"></i>
-                  <p>Stok Barang</p>
+                  <p>Data Barang</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/barang') }}" class="nav-link {{ ($activeMenu == 'penjualan')? 'active' : '' }}">
+                <a href="{{ url('/penjualan') }}" class="nav-link {{ ($activeMenu == 'penjualan')? 'active' : '' }}">
                   <i class="nav-icon fas fa-cash-register"></i>
                   <p>Transaksi Penjualan</p>
                 </a>
-            </li>
+              </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

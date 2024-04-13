@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layout.template')
 @section('content')
 <div class="card card-outline card-primary">
 <div class="card-header">
@@ -12,7 +12,7 @@
 Data yang Anda cari tidak ditemukan.
 </div>
 @else
-<table class="table table-bordered table-striped table-hover tablesm">
+<table class="table table-bordered table-striped table-hover table-sm">
 <tr>
 <th>ID</th>
 <td>{{ $user->user_id }}</td>
@@ -35,7 +35,7 @@ Data yang Anda cari tidak ditemukan.
 </tr>
 </table>
 @endempty
-<a href="{{ url('user') }}" class="btn btn-sm btn-default mt2">Kembali</a>
+<a href="{{ url('user') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
 </div>
 </div>
 @endsection

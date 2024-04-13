@@ -78,7 +78,7 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 <script>
-    $.ajaxSetup({header: {'X_CSRF_TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+    $.ajaxSetup({headers: {'X_CSRF_TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 </script>
 @stack('js')
 </body>

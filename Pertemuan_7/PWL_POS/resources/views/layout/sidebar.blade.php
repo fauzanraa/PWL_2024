@@ -25,6 +25,7 @@
               </p>
             </a>
           </li>
+          @if (auth()->user()->level_id == 1 && 2)
           <li class="nav-header">Data Pengguna</li>
           <li class="nav-item">
             <a href="{{ url('/level')}}" class="nav-link {{ ($activeMenu == 'level')? 'active' : '' }}">
@@ -42,6 +43,7 @@
               </p>
             </a>
             </li>
+          @endif
             <li class="nav-header">Data Barang</li>
               <li class="nav-item">
                 <a href="{{ url('/kategori')}}" class="nav-link {{ ($activeMenu == 'kategori')? 'active' : '' }}">
@@ -50,9 +52,16 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/barang') }}" class="nav-link {{ ($activeMenu == 'stok')? 'active' : '' }}">
+                <a href="{{ url('/barang') }}" class="nav-link {{ ($activeMenu == 'barang')? 'active' : '' }}">
                   <i class="nav-icon fas fa-cubes"></i>
                   <p>Data Barang</p>
+                </a>
+              </li>
+              <li class="nav-header">Data Transaksi</li>
+              <li class="nav-item">
+                <a href="{{ url('/stok')}}" class="nav-link {{ ($activeMenu == 'stok')? 'active' : '' }}">
+                  <i class="nav-icon far fa-bookmark"></i>
+                  <p>Stok Barang</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -61,6 +70,15 @@
                   <p>Transaksi Penjualan</p>
                 </a>
               </li>
+              <li class="nav-header"></li>
+          <li class="nav-item">
+            <a href="{{ route('logout')}}" class="nav-link"> 
+              <i class="nav-icon fas fa-unlock"></i>
+              <p>
+                Logout
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

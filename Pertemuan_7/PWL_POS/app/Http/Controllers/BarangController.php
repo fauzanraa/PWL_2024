@@ -2,41 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\KategoriDataTable;
-use App\Models\KategoriModel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Support\Facades\DB;
+use App\Models\BarangModel;
 
-class KategoriController extends Controller
+class BarangController extends Controller
 {
-    public function index(KategoriDataTable $dataTable) 
-    {
+    public function index(){
         $breadcrumb = (object) [
-            'title' => 'Daftar Kategori',
-            'list' => ['Home','Kategori']
+            'title' => 'Daftar Barang',
+            'list' => ['Home','Barang']
         ];
 
         $page = (object) [
-            'title' => 'Daftar Kategori yang terdaftar dalam sistem'
+            'title' => 'Daftar Barang yang terdaftar dalam sistem'
         ];
 
-        $activeMenu = 'kategori';
-        return $dataTable->render('kategori.index' ,[
-            'breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu
-        ]);
+        $activeMenu = 'barang';
+
+        return view('barang.index',['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
     }
 
     public function list(Request $request) 
     { 
-        $kategori = KategoriModel::all(); 
+        $barang = BarangModel::select('barang_id', 'kategori_id', 'barang_kode', 'barang_nama', 'harga_beli', 'harga_jual') ->with('kategori'); 
     
         // if($request->level_id){
         //     $users->where('level_id',$request->level_id);
         // }
-        return DataTables::of($kategori) 
+        return DataTables::of($barang) 
         ->addIndexColumn() // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex) 
-            ->addColumn('aksi', function ($kategoriModel) {  // menambahkan kolom aksi 
+            ->addColumn('aksi', function ($user) {  // menambahkan kolom aksi 
                 // $btn  = '<a href="'.url('/user/' . $user->user_id).'" class="btn btn-info btn-sm">Detail</a> '; 
                 // $btn .= '<a href="'.url('/user/' . $user->user_id . '/edit').'"class="btn btn-warning btn-sm">Edit</a> '; 
                 // $btn .= '<form class="d-inline-block" method="POST" action="'. url('/user/'.$user->user_id).'">' 
@@ -46,24 +42,5 @@ class KategoriController extends Controller
             }) 
             ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html 
             ->make(true); 
-    }
-
-    public function create()
-    {
-        return view('kategori.create');
-    }
-
-    public function store(Request $request)
-    {
-        KategoriModel::create([
-            'kategori_kode' =>$request->kodeKategori,
-            'kategori_name' =>$request->namaKategori,
-        ]);
-        return redirect('/kategori');
-    }
-
-    public function edit($id){
-        $kategori = KategoriModel::find($id);
-        return view('kategori.edit', ['data'=>$kategori]);
     }
 }
